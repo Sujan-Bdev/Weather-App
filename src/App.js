@@ -4,6 +4,7 @@ import axios from "axios";
 import "./App.css";
 
 import * as WEATHER from "./constants/constant";
+import CurrentWeather from "./components/MainPage/CurrentWeather";
 
 // api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
 
@@ -14,11 +15,11 @@ function App() {
   const [weather, setWeather] = useState({});
   const [location, setLocation] = useState("");
   const [temperature, setTemperature] = useState({});
-
+  const [temperatureClass, setTemperatureClass] = useState("");
   useEffect(() => {
     const apiRequest = async () => {
       try {
-        const locationUrl = `https://api.openweathermap.org/data/2.5/weather?q=${activeCity}&appid=${WEATHER.API_KEY}`;
+        const locationUrl = `https://api.openweathermap.org/data/2.5/weather?q=${activeCity}&units=${temperatureUnit}&appid=${WEATHER.API_KEY}`;
 
         let res = await axios.get(locationUrl);
         let currentConditions = res.data;
@@ -33,7 +34,7 @@ function App() {
           windSpeed: `${currentConditions.wind.speed} ${
             temperatureUnit === "metric" ? "m/s" : "mph"
           }`,
-          iconId: currentConditions.weather[0].id
+          iconId: currentConditions.weather[0].id,
         });
 
         setTemperature({
@@ -52,11 +53,40 @@ function App() {
     apiRequest();
   }, [activeCity]);
 
+  const convertTemperature = () => {
+    if (temperatureUnit === "metric") {
+      return (temperature.temp * 9) / 5 + 32;
+    } else {
+      return temperature.temp;
+    }
+  };
+
+  const setTemperatureInfo = () => {
+    let tempCheck = convertTemperature();
+    if (tempCheck >= 100) {
+      setTemperatureClass("boiling");
+    }
+    if (tempCheck < 100 && tempCheck >= 85) {
+      setTemperatureClass("hot");
+    }
+    if (tempCheck < 85 && tempCheck >= 65) {
+      setTemperatureClass("warm");
+    }
+    if (tempCheck < 65 && tempCheck >= 50) {
+      setTemperatureClass("perfect");
+    }
+    if (tempCheck < 50 && tempCheck >= 32) {
+      setTemperatureClass("cool");
+    }
+    if (tempCheck < 32) {
+      setTemperatureClass("freezing");
+    }
+    
+  };
+
   return (
     <div className="App">
-      <h1>{location}</h1>
-      <h2>{temperature.lowTemp}</h2>
-      <h3>windspeed = {weather.windSpeed} </h3>
+      <CurrentWeather temperature = {temperature.temp} city = {activeCity} iconId = {weather.iconId} description = {weather.description} />
     </div>
   );
 }

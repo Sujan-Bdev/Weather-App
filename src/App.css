@@ -3,3 +3,53 @@
   padding: 0;
 }
 
+.App{
+  text-align: center;
+  margin: 0 auto;
+}
+
+body{
+  font-family:'Raleway', sans-serif;
+  color: #2d6436;
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+.main-icon,
+.big-data h2 {
+	font-size: 6em;
+	border-radius: 50%;
+	padding: 20px;
+	margin: 20px 0 20px 0;
+	display: inline-block;
+	border-top: 20px;
+}
+
+.big-data h2 {
+	border-left: 1px solid #2d3436;
+	border-radius: 0;
+}
+
+.big-data h2,
+.main-city,
+.main-description {
+	font-weight: 400;
+}
+
+
+
+.info{
+  display:block
+}
+.main-description {
+	font-size: 2.5em;
+}
+
+.main-city {
+	font-size: 2em;
+}

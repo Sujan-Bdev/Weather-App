@@ -1,0 +1,3 @@
+currently set the location manually
+in future extend to the feature the weather is updated according to the user current location
+and user can also search the location by city name
