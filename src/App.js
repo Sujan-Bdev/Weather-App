@@ -42,7 +42,7 @@ function App() {
 
         setWeather({
           ...weather,
-          description: currentConditions.weather[0].main,
+          description: currentConditions.weather[0].description,
           humidity: currentConditions.main.humidity,
           time: currentConditions.dt,
           sunrise: currentConditions.sys.sunrise,
@@ -88,7 +88,6 @@ function App() {
         city={location}
         iconId={weather.iconId}
         description={weather.description}
-        loading={loading}
       />
 
       <DetailWeather

@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple weather forecasting web app build using ReactJs which consumes free weather api provided from the openweathermap and has the feature  to find weather as per the user search location.
 
 ## Available Scripts
 

@@ -7,7 +7,7 @@ const CurrentWeather = ({
   city,
   iconId,
   description,
-  loading,
+  
 }) => {
   return (
     <Grid
