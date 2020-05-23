@@ -7,6 +7,7 @@ import * as WEATHER from "./constants/constant";
 import CurrentWeather from "./components/MainPage/CurrentWeather";
 import DetailWeather from "./components/MainPage/DetailWeather";
 import Loading from "./components/MainPage/Loading";
+import NavSearchBar from "./components/Appbar/NavSearchBar";
 
 // api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
 
@@ -16,8 +17,21 @@ function App() {
   const [weather, setWeather] = useState({});
   const [location, setLocation] = useState("");
   const [temperature, setTemperature] = useState({});
-  const [temperatureClass, setTemperatureClass] = useState("");
+  const [callApi, setCallApi] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const [errorFlag, setErrorFlag] = useState(false)
+
+  const handleChange = (e) => {
+
+    
+    setActiveCity(e.target.value);
+  };
+
+  const handleApiCall = (e) => {
+    e.preventDefault();
+    !callApi ? setCallApi(true):setCallApi(false)
+  };
 
   useEffect(() => {
     const apiRequest = async () => {
@@ -54,50 +68,26 @@ function App() {
       } catch (e) {
         setLoading(false);
         console.error(e);
+        setErrorFlag(true)
+
       }
     };
 
     apiRequest();
-  }, [activeCity]);
+  }, [callApi]);
 
-  const convertTemperature = () => {
-    if (temperatureUnit === "metric") {
-      return (temperature.temp * 9) / 5 + 32;
-    } else {
-      return temperature.temp;
-    }
-  };
-
-  const setTemperatureInfo = () => {
-    let tempCheck = convertTemperature();
-    if (tempCheck >= 100) {
-      setTemperatureClass("boiling");
-    }
-    if (tempCheck < 100 && tempCheck >= 85) {
-      setTemperatureClass("hot");
-    }
-    if (tempCheck < 85 && tempCheck >= 65) {
-      setTemperatureClass("warm");
-    }
-    if (tempCheck < 65 && tempCheck >= 50) {
-      setTemperatureClass("perfect");
-    }
-    if (tempCheck < 50 && tempCheck >= 32) {
-      setTemperatureClass("cool");
-    }
-    if (tempCheck < 32) {
-      setTemperatureClass("freezing");
-    }
-  };
-
-  if (loading){
-    return <Loading/>
+  
+  
+  if (loading) {
+    return <Loading />;
   }
+
   return (
     <div className="App">
+      <NavSearchBar handleChangeCity={handleChange} currentCity={activeCity} handleApiCall ={handleApiCall} />
       <CurrentWeather
         temperature={temperature.temp}
-        city={activeCity}
+        city={location}
         iconId={weather.iconId}
         description={weather.description}
         loading={loading}

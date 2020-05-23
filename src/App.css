@@ -1,15 +1,15 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-.App{
+.App {
   text-align: center;
   margin: 0 auto;
 }
 
-body{
-  font-family:'Raleway', sans-serif;
+body {
+  font-family: "Raleway", sans-serif;
   background-color: #4cd3c2;
   color: #363636;
   text-align: center;
@@ -23,34 +23,31 @@ body{
 }
 .main-icon,
 .big-data h2 {
-	font-size: 6em;
-	border-radius: 50%;
-	padding: 20px;
-	margin: 20px 0 20px 0;
-	display: inline-block;
-	border-top: 20px;
+  font-size: 6em;
+  border-radius: 50%;
+  padding: 20px;
+  margin: 20px 0 20px 0;
+  display: inline-block;
+  border-top: 20px;
 }
 
 .big-data h2 {
-	border-left: 2px solid #363636;
-	border-radius: 0;
+  border-left: 2px solid #363636;
+  border-radius: 0;
 }
 
 .big-data h2,
 .main-city,
 .main-description {
-	font-weight: 400;
+  font-weight: 400;
 }
 
-
-
-.info{
-  display:block;
+.info {
+  display: block;
   margin-top: 30px;
-
 }
 .main-description {
-	font-size: 2.5em;
+  font-size: 2.5em;
 }
 
 .main-city {
@@ -64,29 +61,54 @@ body{
   margin-top: 200px;
 }
 
-.whole-details-area{
-  margin:  0px auto;
+.whole-details-area {
+  margin: 0px auto;
   padding: 20px 2% 80px;
   width: 60%;
-
 }
 
-.whole-details-area h4{
+.whole-details-area h4 {
   font-size: 2.5rem;
   margin: 10px auto;
 }
 
 .weather-details {
-  font-family: 'Raleway', sans-serif !important;
-  
+  font-family: "Raleway", sans-serif !important;
 }
 
 .weather-details > tbody > tr > td {
-	color: #2d3436 !important;
-	font-size: 1.2em;
-	letter-spacing: 0.1em;
+  color: #2d3436 !important;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
 }
 
 .cell-data {
-	text-align: right !important;
+  text-align: right !important;
+}
+
+.appbar {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.search {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.search-input,
+.search-button {
+  padding: 8px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.search-button {
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.search-input {
+  color: beige;
+  font-size: 1.2rem;
 }

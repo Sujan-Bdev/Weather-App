@@ -23,7 +23,7 @@ const CurrentWeather = ({
     
       <div className="big-data">
         <i className={`wi wi-owm-${iconId} main-icon`} />
-        <h2>{temperature}&deg;</h2>
+        <h2>{Math.round(temperature)}&deg;</h2>
       </div>
       <div className="info">
         <h2 className="main-description">{description}</h2>
