@@ -10,7 +10,8 @@
 
 body{
   font-family:'Raleway', sans-serif;
-  color: #2d6436;
+  background-color: #4cd3c2;
+  color: #363636;
   text-align: center;
   width: 100%;
   font-size: 16px;
@@ -31,7 +32,7 @@ body{
 }
 
 .big-data h2 {
-	border-left: 1px solid #2d3436;
+	border-left: 2px solid #363636;
 	border-radius: 0;
 }
 
@@ -44,12 +45,21 @@ body{
 
 
 .info{
-  display:block
+  display:block;
+  margin-top: 30px;
+
 }
 .main-description {
 	font-size: 2.5em;
 }
 
 .main-city {
-	font-size: 2em;
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+.loading {
+  font-size: 4rem;
+  color: #0e0d0d;
+  margin-top: 200px;
 }

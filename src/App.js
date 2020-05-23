@@ -16,8 +16,12 @@ function App() {
   const [location, setLocation] = useState("");
   const [temperature, setTemperature] = useState({});
   const [temperatureClass, setTemperatureClass] = useState("");
+  const [loading, setLoading] = useState(false);
+
+
   useEffect(() => {
     const apiRequest = async () => {
+      setLoading(true);
       try {
         const locationUrl = `https://api.openweathermap.org/data/2.5/weather?q=${activeCity}&units=${temperatureUnit}&appid=${WEATHER.API_KEY}`;
 
@@ -45,12 +49,15 @@ function App() {
         });
 
         setLocation(currentConditions.name);
+        setLoading(false);
       } catch (e) {
+        setLoading(false);
         console.error(e);
       }
     };
 
     apiRequest();
+    
   }, [activeCity]);
 
   const convertTemperature = () => {
@@ -81,12 +88,17 @@ function App() {
     if (tempCheck < 32) {
       setTemperatureClass("freezing");
     }
-    
   };
 
   return (
     <div className="App">
-      <CurrentWeather temperature = {temperature.temp} city = {activeCity} iconId = {weather.iconId} description = {weather.description} />
+      <CurrentWeather
+        temperature={temperature.temp}
+        city={activeCity}
+        iconId={weather.iconId}
+        description={weather.description}
+        loading = {loading}
+      />
     </div>
   );
 }
