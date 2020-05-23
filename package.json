@@ -1,6 +1,6 @@
 {
-  "home": "http://Sujan-Bdev.github.io/Weather-App",
   "name": "weather-app",
+  "homepage": "http://Sujan-Bdev.github.io/Weather-App",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
