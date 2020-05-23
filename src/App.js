@@ -5,11 +5,12 @@ import "./App.css";
 
 import * as WEATHER from "./constants/constant";
 import CurrentWeather from "./components/MainPage/CurrentWeather";
+import DetailWeather from "./components/MainPage/DetailWeather";
+import Loading from "./components/MainPage/Loading";
 
 // api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
 
 function App() {
-  // console.log(WEATHER.API_KEY)
   const [activeCity, setActiveCity] = useState("Kathmandu");
   const [temperatureUnit, setTemperatureUnit] = useState("metric");
   const [weather, setWeather] = useState({});
@@ -17,7 +18,6 @@ function App() {
   const [temperature, setTemperature] = useState({});
   const [temperatureClass, setTemperatureClass] = useState("");
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     const apiRequest = async () => {
@@ -33,6 +33,7 @@ function App() {
           ...weather,
           description: currentConditions.weather[0].main,
           humidity: currentConditions.main.humidity,
+          time: currentConditions.dt,
           sunrise: currentConditions.sys.sunrise,
           sunset: currentConditions.sys.sunset,
           windSpeed: `${currentConditions.wind.speed} ${
@@ -57,7 +58,6 @@ function App() {
     };
 
     apiRequest();
-    
   }, [activeCity]);
 
   const convertTemperature = () => {
@@ -90,6 +90,9 @@ function App() {
     }
   };
 
+  if (loading){
+    return <Loading/>
+  }
   return (
     <div className="App">
       <CurrentWeather
@@ -97,7 +100,17 @@ function App() {
         city={activeCity}
         iconId={weather.iconId}
         description={weather.description}
-        loading = {loading}
+        loading={loading}
+      />
+
+      <DetailWeather
+        highTemp={temperature.highTemp}
+        lowTemp={temperature.lowTemp}
+        sunRise={weather.sunrise}
+        sunSet={weather.sunset}
+        humidity={weather.humidity}
+        windSpeed={weather.windSpeed}
+        time={weather.time}
       />
     </div>
   );

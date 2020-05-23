@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import Loading from './Loading';
 
 const CurrentWeather = ({
   temperature,
@@ -9,11 +10,6 @@ const CurrentWeather = ({
   loading,
 }) => {
 
-  if (loading) {
-    return (
-      <h2 class = 'loading'>Loading...</h2>
-    )
-  }
   
   return (
     <Grid
@@ -22,7 +18,7 @@ const CurrentWeather = ({
       justify="center"
       alignContent="center"
       className="main-content"
-      container
+      
     >
     
       <div className="big-data">

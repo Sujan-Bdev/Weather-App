@@ -63,3 +63,30 @@ body{
   color: #0e0d0d;
   margin-top: 200px;
 }
+
+.whole-details-area{
+  margin:  0px auto;
+  padding: 20px 2% 80px;
+  width: 60%;
+
+}
+
+.whole-details-area h4{
+  font-size: 2.5rem;
+  margin: 10px auto;
+}
+
+.weather-details {
+  font-family: 'Raleway', sans-serif !important;
+  
+}
+
+.weather-details > tbody > tr > td {
+	color: #2d3436 !important;
+	font-size: 1.2em;
+	letter-spacing: 0.1em;
+}
+
+.cell-data {
+	text-align: right !important;
+}
