@@ -3,7 +3,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
 const Navbar = ({ handleChangeCity, handleApiCall, currentCity }) => {
-  
   return (
     <div className="appbar">
       <Toolbar>
@@ -22,7 +21,11 @@ const Navbar = ({ handleChangeCity, handleApiCall, currentCity }) => {
             value={currentCity}
             onChange={handleChangeCity}
           />
-          <button type="submit" className="search-button" onClick={handleApiCall}>
+          <button
+            type="submit"
+            className="search-button"
+            onClick={handleApiCall}
+          >
             <i className="fas fa-search" />
           </button>
         </div>

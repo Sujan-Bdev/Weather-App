@@ -9,7 +9,6 @@ import DetailWeather from "./components/MainPage/DetailWeather";
 import Loading from "./components/MainPage/Loading";
 import NavSearchBar from "./components/Appbar/NavSearchBar";
 
-// api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
 
 function App() {
   const [activeCity, setActiveCity] = useState("Kathmandu");
@@ -20,17 +19,15 @@ function App() {
   const [callApi, setCallApi] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [errorFlag, setErrorFlag] = useState(false)
+  const [errorFlag, setErrorFlag] = useState(false);
 
   const handleChange = (e) => {
-
-    
     setActiveCity(e.target.value);
   };
 
   const handleApiCall = (e) => {
     e.preventDefault();
-    !callApi ? setCallApi(true):setCallApi(false)
+    !callApi ? setCallApi(true) : setCallApi(false);
   };
 
   useEffect(() => {
@@ -68,23 +65,24 @@ function App() {
       } catch (e) {
         setLoading(false);
         console.error(e);
-        setErrorFlag(true)
-
+        setErrorFlag(true);
       }
     };
 
     apiRequest();
   }, [callApi]);
 
-  
-  
   if (loading) {
     return <Loading />;
   }
 
   return (
     <div className="App">
-      <NavSearchBar handleChangeCity={handleChange} currentCity={activeCity} handleApiCall ={handleApiCall} />
+      <NavSearchBar
+        handleChangeCity={handleChange}
+        currentCity={activeCity}
+        handleApiCall={handleApiCall}
+      />
       <CurrentWeather
         temperature={temperature.temp}
         city={location}

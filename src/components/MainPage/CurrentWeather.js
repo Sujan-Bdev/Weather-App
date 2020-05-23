@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import Loading from './Loading';
+import Loading from "./Loading";
 
 const CurrentWeather = ({
   temperature,
@@ -9,8 +9,6 @@ const CurrentWeather = ({
   description,
   loading,
 }) => {
-
-  
   return (
     <Grid
       item
@@ -18,9 +16,7 @@ const CurrentWeather = ({
       justify="center"
       alignContent="center"
       className="main-content"
-      
     >
-    
       <div className="big-data">
         <i className={`wi wi-owm-${iconId} main-icon`} />
         <h2>{Math.round(temperature)}&deg;</h2>
